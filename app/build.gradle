@@ -1,0 +1,68 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "vostore.policlinica.meuexame"
+        minSdkVersion 19
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        lintOptions {
+            checkReleaseBuilds false
+            // Or, if you prefer, you can continue to check for errors in release builds,
+            // but continue the build even when errors are found:
+            abortOnError false
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'androidx.cardview:cardview:1.0.0'
+
+
+
+    implementation 'androidx.multidex:multidex:2.0.0'
+    implementation 'com.android.support:design:28.0.0'
+    implementation 'com.android.support:cardview-v7:28.0.0'
+
+    //Bibliotecas do GITHUB
+    implementation 'com.github.mejdi14:Flat-Dialog-Android:1.0.4'
+    implementation 'com.github.abdularis:circularimageview:1.3'
+    implementation 'com.journeyapps:zxing-android-embedded:3.0.2@aar'
+    implementation "com.airbnb.android:lottie:2.6.0-beta19"
+
+    //Bibliotecas da Google
+    implementation 'com.google.zxing:core:3.2.1'
+    implementation 'com.google.firebase:firebase-auth:15.0.0'
+    implementation 'com.google.android.gms:play-services-auth:15.0.0'
+    implementation 'com.rengwuxian.materialedittext:library:2.1.4'
+
+
+    //Firebase
+    implementation 'com.google.firebase:firebase-database:15.0.0'
+    implementation 'com.google.android.gms:play-services-ads:15.0.0'
+
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
+
+    implementation 'com.github.abdularis:circularimageview:1.3'
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+}
+apply plugin: 'com.google.gms.google-services'

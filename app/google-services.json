@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "847892946879",
+    "firebase_url": "https://policlinica-alagoinhas.firebaseio.com",
+    "project_id": "policlinica-alagoinhas",
+    "storage_bucket": "policlinica-alagoinhas.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:847892946879:android:48f921f944da973c26cb0a",
+        "android_client_info": {
+          "package_name": "vostore.policlinica.meuexame"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "847892946879-q7fnc6pdh83av9hpo23otm014prvvm7k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "vostore.policlinica.meuexame",
+            "certificate_hash": "7ac5f4cf4875c42ba5404958d570ba6c9f533583"
+          }
+        },
+        {
+          "client_id": "847892946879-27focgksndecjt82evlmhclj74aa137o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfiv--1BfCPQbbkOjK5Msrmo-Vq8cxjBE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "847892946879-27focgksndecjt82evlmhclj74aa137o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/lineaar"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="10dp"
+    tools:context="vostore.professordouglas.MainActivity">
+
+
+
+    <ImageView
+        android:id="@+id/logoid"
+        android:layout_width="70dp"
+        android:layout_height="63dp"
+        android:layout_alignParentTop="false"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_vertical|center"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="2dp"
+        android:src="@drawable/logo" />
+
+    <ScrollView
+        android:id="@+id/linearScrool"
+        android:layout_width="401dp"
+        android:layout_height="577dp"
+        android:layout_above="@+id/linearFechar"
+        android:layout_below="@+id/logoid"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="-200dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+           <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:id="@+id/linearExibirComentarios"
+                >
+
+                <TextView
+                    android:id="@+id/text_comentario"
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:enabled="true"
+                    android:fontFamily="@font/roboto_light"
+                    android:text="Exibir Comentários"
+                    android:textAllCaps="false"
+                    android:textColor="#1A1919"
+                    android:visibility="visible" />
+
+                <Switch
+                    android:id="@+id/switch_comentario"
+                    android:layout_width="51dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:checked="false"
+                    android:enabled="true"
+                    android:textAllCaps="false"
+                    android:textColor="#ffffff"
+                    android:visibility="visible"
+                    tools:checked="true" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="338dp"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/texto_enviar"
+                    android:layout_width="284dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/edit_enviar"
+                    android:fontFamily="@font/roboto_light"
+                    android:hint="Enviar mensagem."
+                    android:padding="10dp"
+                    android:singleLine="false"
+                    android:textSize="15dp"
+                    android:visibility="gone" />
+
+                <ImageButton
+                    android:id="@+id/btn_enviar"
+                    android:layout_width="29dp"
+                    android:layout_height="29dp"
+                    android:layout_gravity="bottom"
+                    android:layout_margin="10sp"
+                    android:background="@drawable/sendblack"
+                    android:enabled="true"
+                    android:fontFamily="@font/roboto_light"
+                    android:textAllCaps="false"
+                    android:textColor="#ffffff"
+                    android:visibility="visible" />
+            </LinearLayout>
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Comentários"
+                android:textColor="#1d1d1d"
+                android:textSize="16sp"
+                android:visibility="gone" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/id_recycler2"
+                android:layout_width="match_parent"
+                android:layout_height="229dp"
+                android:layout_above="@+id/id_recycler"
+                android:visibility="visible">
+
+            </androidx.recyclerview.widget.RecyclerView>
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>
+
+

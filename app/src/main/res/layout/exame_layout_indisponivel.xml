@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="50sp"
+        app:cardBackgroundColor="@color/common_google_signin_btn_text_dark_default"
+        app:cardCornerRadius="30dp"
+        app:cardElevation="2dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:gravity="left"
+                android:orientation="horizontal">
+
+                <com.github.abdularis.civ.AvatarImageView
+                    android:id="@+id/profile_image"
+                    android:layout_width="94dp"
+                    android:layout_height="67dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:src="@drawable/iconaguarde"
+                    app:avatarBackgroundColor="#1976D2"
+                    app:state="IMAGE"
+                    app:textSize="22sp" />
+
+                <TextView
+                    android:id="@+id/profile_nome_paciente"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_toEndOf="@+id/profile_image"
+                    android:gravity="center"
+                    android:text="Maria José da Silva Barbosa"
+                    android:textColor="#1d1d1d"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="left"
+                android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
+                android:gravity="left"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:id="@+id/profile_artigo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="false"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="0dp"
+                    android:gravity="center"
+                    android:text="Raio X"
+                    android:textAllCaps="false"
+                    android:textColor="#1d1d1d"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/profile_subTitulo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="false"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginBottom="1dp"
+                    android:gravity="center"
+                    android:text="23/10/2019"
+                    android:textAllCaps="false"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/profile_leis"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/profile_nome"
+                    android:layout_marginTop="1dp"
+                    android:gravity="left"
+                    android:visibility="gone"
+                    android:text="Aplica-se a lei brasileira, sem prejuízo de convenções, tratados e regras de direito internacional, ao crime cometido no território nacionalAplica-se a lei brasileira, sem prejuízo de convenções, tratados e regras de direito internacional, ao crime cometido no território nacionalAplica-se a lei brasileira, sem prejuízo de convenções, tratados e regras de direito internacional, ao crime cometido no território nacionalAplica-se a lei brasileira, sem prejuízo de convenções, tratados e regras de direito internacional, ao crime cometido no território nacionalAplica-se a lei brasileira, sem prejuízo de convenções, tratados e regras de direito internacional, ao crime cometido no território nacional"
+                    android:textAlignment="inherit"
+                    android:textColor="#1d1d1d"
+                    android:textSize="14sp" />
+                <WebView
+                    android:id="@+id/webview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+
+                <Button
+                    android:layout_width="180dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/btn_verde"
+                    android:text="continuar leitura"
+                    android:textColor="#ffffff"
+                    android:textStyle="normal"
+                    android:typeface="normal"
+                    android:visibility="gone" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+    <EditText
+        android:id="@+id/id_titulo_lei"
+        android:layout_width="326dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edit_enviar"
+        android:padding="10dp"
+        android:visibility="gone"
+        android:singleLine="false" />
+
+
+</LinearLayout>

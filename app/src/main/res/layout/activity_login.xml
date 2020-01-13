@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linear"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    tools:context=".MainActivity"
+    >
+
+    <TextView
+        android:id="@+id/id_criar_registro"
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
+        android:layout_alignBottom="@+id/logo"
+        android:layout_marginBottom="2dp"
+        android:gravity="center"
+        android:text="Aréa de Comunicação Interna" />
+
+    <Button
+        android:id="@+id/entrar_id"
+        android:layout_width="152dp"
+        android:layout_height="37dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="160dp"
+        android:background="@drawable/img_btn_entrar"
+        android:gravity="center" />
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="301dp"
+        android:layout_height="170dp"
+        android:layout_alignParentTop="false"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_vertical|center"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/logo_two" />
+
+    <androidx.cardview.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:layout_width="295dp"
+        android:layout_height="152dp"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:foregroundGravity="center_vertical"
+        app:cardBackgroundColor="#ffffff"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="239dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="155dp"
+            android:padding="10sp"
+            android:orientation="vertical">
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/emailid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="seuemail@dominio.com"
+                android:maxLength="50"
+                android:padding="10sp"
+                android:singleLine="true"
+                android:textSize="10sp"
+                android:textColor="#1d1d1d"
+                app:met_baseColor="#323333"
+                app:met_errorColor="#ddaa00"
+                app:met_floatingLabel="highlight"
+                app:met_floatingLabelText="E-mail"
+                app:met_floatingLabelTextColor="#1d1d1d"
+                app:met_primaryColor="#982360"
+                android:textColorHint="#1d1d1d"
+                card_view:met_checkCharactersCountAtBeginning="true"
+                 />
+
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/senhaid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Senha de Acesso"
+                android:inputType="numberPassword"
+                android:padding="10sp"
+                android:singleLine="true"
+                android:textSize="10sp"
+                app:met_baseColor="#242626"
+                app:met_errorColor="#ddaa00"
+                app:met_floatingLabel="highlight"
+                app:met_floatingLabelText="Senha"
+                app:met_floatingLabelTextColor="#242626"
+                app:met_primaryColor="#982360"
+                />
+
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>
