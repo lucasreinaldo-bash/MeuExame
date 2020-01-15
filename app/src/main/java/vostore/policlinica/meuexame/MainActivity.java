@@ -76,6 +76,7 @@ public class MainActivity extends AppCompatActivity    {
     private TextToSpeech mTTS;
     MultiFormatWriter multi = new MultiFormatWriter();
     ClasseExame pp;
+    private TextView btnRegistro;
 
 
     Context ctx;

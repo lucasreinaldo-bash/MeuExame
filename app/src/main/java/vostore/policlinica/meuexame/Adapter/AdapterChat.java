@@ -7,17 +7,24 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.github.abdularis.civ.AvatarImageView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
+import vostore.policlinica.meuexame.Firebase.ConfiguracaoFirebase;
 import vostore.policlinica.meuexame.R;
 import vostore.policlinica.meuexame.Usuario;
 import vostore.policlinica.meuexame.menuComentarios.ComentarioUsuario;
@@ -28,6 +35,7 @@ public class AdapterChat extends RecyclerView.Adapter<AdapterChat.MyViewHolder> 
     Context context;
     ArrayList<ComentarioUsuario> Experts;
 
+    Boolean solucionado;
 
     private TextToSpeech mTTS;
     private FirebaseAuth mAuth;
@@ -72,19 +80,78 @@ public class AdapterChat extends RecyclerView.Adapter<AdapterChat.MyViewHolder> 
         holder.profileNome.setText(Experts.get(position).getNomeRegulacao()+ " disse:");
         holder.profileComentario.setText(Experts.get(position).getComentarioUsuario());
         holder.profileData.setText(Experts.get(position).getDataHora());
+        solucionado = (Experts.get(position).getSolucionado());
         Picasso.get().load(Experts.get(position).getUrlImagem()).into(holder.profilePic);
         mAuth = FirebaseAuth.getInstance();
         String tipoComentario = Experts.get(position).getTipoComentario();
 
 
         if (tipoComentario == "padrao"){
-holder.imgUsuarioVip.setVisibility(View.VISIBLE);
+        holder.imgUsuarioVip.setVisibility(View.VISIBLE);
         }
         else {
             holder.imgUsuarioVip.setVisibility(View.GONE);
 
 
         }
+
+        if (Experts.get(position).getNomeRegulacao() != "Policlinica Regional de Alagoinhas"){
+            holder.btnSolucionado.setVisibility(View.VISIBLE);
+            Toast.makeText(context, "Hehe", Toast.LENGTH_SHORT).show();
+        }else {
+            holder.btnSolucionado.setVisibility(View.GONE);        }
+
+
+        if (solucionado == true ){
+            holder.btnSolucionado.setFrame(13);
+            holder.txtProblemaSituacao.setText("Problema já resolvido!");
+
+        }else{
+            holder.btnSolucionado.setFrame(52);
+            holder.txtProblemaSituacao.setText("Problema não solucionado!");
+
+        }
+        holder.btnSolucionado.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (solucionado == true){
+
+                    solucionado = false;
+
+                    holder.btnSolucionado.setFrame(52);
+
+                    holder.txtProblemaSituacao.setText("Problema não solucionado!");
+
+                    reference1 = ConfiguracaoFirebase.getFirebase().child("Chat").child("Regulacao Alagoinhas");
+                    final Query query = reference1.orderByChild("dataHora").equalTo("22/12/2019").limitToFirst(1);
+                    query.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+
+                        reference1.setValue(Experts);
+
+
+                    }
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });}
+                else{
+                    solucionado = true;
+
+                    holder.btnSolucionado.setFrame(13);
+
+
+                    holder.txtProblemaSituacao.setText("Problema já resolvido!");
+                }
+
+
+
+
+            }
+        });
 
 //        //Como no Android não há uma forma nativa de justificar um TextView, usei um WebView e manipulei a string usando o HTML
 //        String text = "<html><body>"
@@ -132,9 +199,11 @@ holder.imgUsuarioVip.setVisibility(View.VISIBLE);
 
 
         private TextView profileComentario;
+        private TextView txtProblemaSituacao;
         private TextView profileNome,profileData;
         private AvatarImageView profilePic;
         private ImageView imgUsuarioVip;
+        private LottieAnimationView btnSolucionado;
 
         public MyViewHolder(View itemView) {
             super(itemView);
@@ -142,6 +211,8 @@ holder.imgUsuarioVip.setVisibility(View.VISIBLE);
 
 
 
+            txtProblemaSituacao = itemView.findViewById(R.id.txt_situacao_problema);
+            btnSolucionado = itemView.findViewById(R.id.btn_solucionado);
             profileNome = itemView.findViewById(R.id.profile_nome);
             profileComentario = itemView.findViewById(R.id.profile_comentario);
             profileData = itemView.findViewById(R.id.profile_data);

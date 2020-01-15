@@ -59,6 +59,7 @@ public class Login extends AppCompatActivity  {
     private SignInButton btnGoogleLogin;
     private Button btnLogin;
     private TextView btnRegistro;
+    private TextView registrar;
     private EditText senhausuario,emailusuario;
     private FirebaseAuth mAuth,firebaseAuth;
     private DatabaseReference databaseReference;
@@ -80,6 +81,7 @@ public class Login extends AppCompatActivity  {
         mAuth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
 
+        verificarUsuarioLogado();
         setContentView(R.layout.activity_login);
 //        verificarUsuarioLogado();
 //hj
@@ -88,7 +90,7 @@ public class Login extends AppCompatActivity  {
 
         //Fazendo o Cast dos botões e campos
         btnLogin = findViewById(R.id.entrar_id);
-        btnRegistro = findViewById(R.id.id_criar_registro);
+        btnRegistro = findViewById(R.id.id_registrar);
         senhausuario = findViewById(R.id.senhaid);
         emailusuario = findViewById(R.id.emailid);
         databaseReference = FirebaseDatabase.getInstance().getReference();
@@ -96,6 +98,16 @@ public class Login extends AppCompatActivity  {
 
         //Instanciando o servidor de dados
 
+
+        btnRegistro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(
+                        Login.this, Registro.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         // Adicionando uma ação ao evento do click
         btnLogin.setOnClickListener(new View.OnClickListener() {
@@ -136,6 +148,8 @@ public class Login extends AppCompatActivity  {
 
 
     }
+
+
     private void login() {
 
         final String email = emailusuario.getText().toString();
@@ -156,7 +170,9 @@ public class Login extends AppCompatActivity  {
                                          Toast.makeText(Login.this,"login bem sucedido",Toast.LENGTH_SHORT).show();
                                     }
                                     // Toast.makeText(login.this,"login bem sucedido",Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(Login.this, MainActivity.class);
+
+
+                                    Intent intent = new Intent(Login.this, Chat.class);
                                     startActivity(intent);
                                     finish();
 
@@ -193,7 +209,7 @@ public class Login extends AppCompatActivity  {
     private void abrirTelaPrincipal() {
 
 
-        Intent intent = new Intent(Login.this,MainActivity.class);
+        Intent intent = new Intent(Login.this,Chat.class);
         startActivity(intent);
 
 

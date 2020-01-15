@@ -43,7 +43,7 @@ dependencies {
     implementation 'com.github.mejdi14:Flat-Dialog-Android:1.0.4'
     implementation 'com.github.abdularis:circularimageview:1.3'
     implementation 'com.journeyapps:zxing-android-embedded:3.0.2@aar'
-    implementation "com.airbnb.android:lottie:2.6.0-beta19"
+    implementation "com.airbnb.android:lottie:3.0.7"
 
     //Bibliotecas da Google
     implementation 'com.google.zxing:core:3.2.1'

@@ -196,7 +196,6 @@
             android:textColor="#ffffff"
             android:visibility="visible"
             app:lottie_autoPlay="true"
-
             app:lottie_fileName="btn_enviar_anim.json"
             app:lottie_loop="true" />
 

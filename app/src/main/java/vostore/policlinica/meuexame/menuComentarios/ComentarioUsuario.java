@@ -10,7 +10,15 @@ public class ComentarioUsuario {
     private String image;
     private String urlImagem ;
     private String tipoComentario = "padrao";
+    private Boolean solucionado = false;
 
+    public Boolean getSolucionado() {
+        return solucionado;
+    }
+
+    public void setSolucionado(Boolean solucionado) {
+        this.solucionado = solucionado;
+    }
 
     public ComentarioUsuario() {
     }
@@ -23,9 +31,10 @@ public class ComentarioUsuario {
         this.image = image;
     }
 
-    public ComentarioUsuario(String categoriaUsuario, String tipoComentario, int idLei, String uidUsuario, String nomeRegulacao, String comentarioUsuario, String dataHora, String image, String urlImagem) {
+    public ComentarioUsuario(String categoriaUsuario,Boolean solucionado, String tipoComentario, int idLei, String uidUsuario, String nomeRegulacao, String comentarioUsuario, String dataHora, String image, String urlImagem) {
         this.categoriaUsuario = categoriaUsuario;
         this.idLei = idLei;
+        this.solucionado = solucionado;
         this.uidUsuario = uidUsuario;
         this.nomeRegulacao = nomeRegulacao;
         this.comentarioUsuario = comentarioUsuario;
