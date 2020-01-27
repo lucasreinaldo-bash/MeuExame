@@ -71,7 +71,7 @@ public class SplashBoasVindas extends AppCompatActivity implements Runnable {
 
     //Usando intent no método run
     public void run(){
-        startActivity(new Intent(this, MainActivityMenu.class));
+        startActivity(new Intent(this, Splash.class));
         finish();
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }

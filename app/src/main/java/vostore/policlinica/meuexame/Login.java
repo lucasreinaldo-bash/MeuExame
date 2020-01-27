@@ -172,9 +172,7 @@ public class Login extends AppCompatActivity  {
                                     // Toast.makeText(login.this,"login bem sucedido",Toast.LENGTH_SHORT).show();
 
 
-                                    Intent intent = new Intent(Login.this, Chat.class);
-                                    startActivity(intent);
-                                    finish();
+                                    recuperarRegulacao();
 
                                     //overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                                 } else {
@@ -201,7 +199,7 @@ public class Login extends AppCompatActivity  {
         FirebaseUser user = mAuth.getCurrentUser();
 
         if(mAuth.getCurrentUser()!= null || user != null ){
-            abrirTelaPrincipal();
+          recuperarRegulacao();
 
         }
     }
@@ -216,6 +214,44 @@ public class Login extends AppCompatActivity  {
     }
 
 
+    private void recuperarRegulacao (){
+
+        final FirebaseUser currentUser = mAuth.getCurrentUser();
+        String idUsuario = currentUser.getUid();
+
+        refe1 = ConfiguracaoFirebase.getFirebase().child("Usuario").child(""+idUsuario);
+        refe1.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                if (dataSnapshot.exists()){
+                    Usuario usuario = dataSnapshot.getValue(Usuario.class);
+
+
+
+                    Boolean perfil = usuario.getPerfilAdministrador();
+
+                    if (perfil == true) {
+                        Intent intent = new Intent(Login.this, ReguladoresChat.class);
+                        startActivity(intent);
+                        finish();
+                    }else{
+                        String nomeRegula = usuario.getNomeRegulacao();
+                        Intent intent = new Intent(Login.this, Chat.class);
+                        intent.putExtra("site", nomeRegula);
+                        startActivity(intent);
+                        finish();
+                    }
+
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
 
     private  void updateUI(){
         // Toast.makeText(Login.this, "Login Realizado", Toast.LENGTH_SHORT).show();

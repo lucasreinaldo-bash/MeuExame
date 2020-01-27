@@ -11,13 +11,13 @@ public class NovaMensagem {
     private String dataHora;
     private Boolean solucionado;
     private String urlImagem;
-    private int idChat;
+    private String idChat;
 
-    public int getIdChat() {
+    public String getIdChat() {
         return idChat;
     }
 
-    public void setIdChat(int idChat) {
+    public void setIdChat(String idChat) {
         this.idChat = idChat;
     }
 
@@ -93,7 +93,7 @@ public class NovaMensagem {
         this.urlImagem = urlImagem;
     }
 
-    public NovaMensagem(String nomeRegulacao,int idChat, String responsavelRegulacao, String email, String imagemUsuario, String id, String comentarioUsuario, String dataHora, Boolean solucionado, String urlImagem) {
+    public NovaMensagem(String nomeRegulacao,String idChat, String responsavelRegulacao, String email, String imagemUsuario, String id, String comentarioUsuario, String dataHora, Boolean solucionado, String urlImagem) {
         this.nomeRegulacao = nomeRegulacao;
         this.responsavelRegulacao = responsavelRegulacao;
         this.email = email;

@@ -9,6 +9,20 @@ public class ComentarioUsuario {
     private String dataHora;
     private String image;
     private String urlImagem ;
+    private String idChat;
+
+    public String getIdChat() {
+        return idChat;
+    }
+
+    public void setIdChat(String idChat) {
+        this.idChat = idChat;
+    }
+
+    public ComentarioUsuario(String idChat) {
+        this.idChat = idChat;
+    }
+
     private String tipoComentario = "padrao";
     private Boolean solucionado = false;
 

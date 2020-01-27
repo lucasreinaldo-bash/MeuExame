@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+android:background="@color/tw__transparent"
+    android:padding="20dp"
+    android:gravity="center"
+    android:id="@+id/linear"
+    android:orientation="horizontal">
+<View
+    android:layout_width="5dp"
+    android:background="#214C96"
+    android:layout_height="200dp"></View>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:padding="10dp"
+
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:id="@+id/card"
+            android:background="@color/tw__transparent"
+            app:cardBackgroundColor="@color/whiteBodyColor"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="2dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="left"
+            android:background="@drawable/gradiente"
+
+            android:gravity="left"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/logo_professor"
+                    android:layout_width="94dp"
+                    android:layout_height="67dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    app:srcCompat="@drawable/bandeira_alagoinhas"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:id="@+id/profile_image"
+                    android:layout_width="109dp"
+                    android:layout_height="90dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginBottom="5dp"
+                    android:src="@drawable/bandeira_alagoinhas" />
+
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/profile_nome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="false"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="0dp"
+                android:fontFamily="@font/quicksand_bold"
+                android:gravity="center"
+                android:text="Regulação de Alagoinhas"
+                android:textAllCaps="false"
+                android:textColor="#ffffff"
+                android:textSize="16sp"
+                android:visibility="visible" />
+
+
+            <TextView
+                android:id="@+id/profile_comentario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/profile_nome"
+                android:layout_marginTop="1dp"
+                android:fontFamily="@font/roboto_light"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="Dalmacia da Silva"
+                android:textAlignment="center"
+                android:textColor="#ffffff"
+                android:textSize="14sp"
+                android:visibility="visible" />
+            <TextView
+                android:id="@+id/profile_ultima_mensagem"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="false"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="0dp"
+                android:fontFamily="@font/quicksand_bold"
+                android:gravity="left"
+                android:layout_marginLeft="10dp"
+                android:textAllCaps="false"
+                android:textColor="#ffffff"
+                android:textSize="16sp"
+                android:visibility="visible" />
+            <TextView
+                android:id="@+id/profile_data"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/profile_nome"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/roboto_black"
+                android:gravity="left"
+                android:text="15/10/2019 as 01:30 PM"
+                android:textAlignment="inherit"
+                android:textColor="#ffffff"
+                android:textSize="8sp"
+                android:visibility="visible" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="5dp"
+                android:background="#2A8588"
+                >
+
+            </View>
+
+        </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+</LinearLayout>

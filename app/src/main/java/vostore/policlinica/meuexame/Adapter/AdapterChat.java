@@ -1,6 +1,7 @@
 package vostore.policlinica.meuexame.Adapter;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.speech.tts.TextToSpeech;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,6 +25,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
+import vostore.policlinica.meuexame.Chat;
 import vostore.policlinica.meuexame.Firebase.ConfiguracaoFirebase;
 import vostore.policlinica.meuexame.R;
 import vostore.policlinica.meuexame.Usuario;
@@ -68,7 +70,7 @@ public class AdapterChat extends RecyclerView.Adapter<AdapterChat.MyViewHolder> 
     }
 
     @Override
-    public void onBindViewHolder(final AdapterChat.MyViewHolder holder, int position) {
+    public void onBindViewHolder(final AdapterChat.MyViewHolder holder, final int position) {
 
         user = FirebaseAuth.getInstance().getCurrentUser();
         idDoUsuario = user.getUid();
@@ -77,31 +79,37 @@ public class AdapterChat extends RecyclerView.Adapter<AdapterChat.MyViewHolder> 
 
         // O Holder é responsável por instanciar os elementos do layout.
 
-        holder.profileNome.setText(Experts.get(position).getNomeRegulacao()+ " disse:");
+        holder.profileNome.setText(Experts.get(position).getNomeRegulacao()+ "\n disse:");
         holder.profileComentario.setText(Experts.get(position).getComentarioUsuario());
         holder.profileData.setText(Experts.get(position).getDataHora());
         solucionado = (Experts.get(position).getSolucionado());
         Picasso.get().load(Experts.get(position).getUrlImagem()).into(holder.profilePic);
         mAuth = FirebaseAuth.getInstance();
-        String tipoComentario = Experts.get(position).getTipoComentario();
+        final Boolean problemaSolucao = Experts.get(position).getSolucionado();
 
 
-        if (tipoComentario == "padrao"){
-        holder.imgUsuarioVip.setVisibility(View.VISIBLE);
-        }
-        else {
-            holder.imgUsuarioVip.setVisibility(View.GONE);
+//        if (tipoComentario == "padrao"){
+//        holder.imgUsuarioVip.setVisibility(View.VISIBLE);
+//        }
+//        else {
+//            holder.imgUsuarioVip.setVisibility(View.GONE);
+//
+//
+//        }
+
+        holder.profilePic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Toast.makeText(context, ""+Experts.get(position).getIdChat(), Toast.LENGTH_SHORT).show();
+            }
+        });
 
 
-        }
 
-        if (Experts.get(position).getNomeRegulacao() != "Policlinica Regional de Alagoinhas"){
-            holder.btnSolucionado.setVisibility(View.VISIBLE);
-            Toast.makeText(context, "Hehe", Toast.LENGTH_SHORT).show();
-        }else {
-            holder.btnSolucionado.setVisibility(View.GONE);        }
-
-
+//        if (Experts.get(position).getNomeRegulacao() == "Policlinica Regional de Alagoinhas"){
+//            holder.btnSolucionado.setVisibility(View.GONE);
+//
+//        }
         if (solucionado == true ){
             holder.btnSolucionado.setFrame(13);
             holder.txtProblemaSituacao.setText("Problema já resolvido!");
@@ -111,48 +119,141 @@ public class AdapterChat extends RecyclerView.Adapter<AdapterChat.MyViewHolder> 
             holder.txtProblemaSituacao.setText("Problema não solucionado!");
 
         }
-        holder.btnSolucionado.setOnClickListener(new View.OnClickListener() {
+        final FirebaseUser currentUser = mAuth.getCurrentUser();
+        String idUsuario = currentUser.getUid();
+        reference4 = ConfiguracaoFirebase.getFirebase().child("Usuario").child(""+idUsuario);
+        reference4.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onClick(View v) {
+            public void onDataChange(DataSnapshot dataSnapshot) {
 
-                if (solucionado == true){
 
-                    solucionado = false;
+                Usuario usuario = dataSnapshot.getValue(Usuario.class);
+                boolean perfil = usuario.getPerfilAdministrador();
 
-                    holder.btnSolucionado.setFrame(52);
+                String nomePoli = "Policlínica Regional de Alagoinhas";
 
-                    holder.txtProblemaSituacao.setText("Problema não solucionado!");
+//                Toast.makeText(context, ""+perfil, Toast.LENGTH_SHORT).show();
+                if (perfil == true) {
 
-                    reference1 = ConfiguracaoFirebase.getFirebase().child("Chat").child("Regulacao Alagoinhas");
-                    final Query query = reference1.orderByChild("dataHora").equalTo("22/12/2019").limitToFirst(1);
-                    query.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
 
-                        reference1.setValue(Experts);
+                    SharedPreferences settingss = context.getSharedPreferences("pref", Context.MODE_PRIVATE);
+                    final String nomeRegula = settingss.getString("pref", "Policlinica Regional de Alagoinhas");
 
+                    if (solucionado == false) {
+
+
+                        holder.btnSolucionado.setFrame(52);
+
+                        holder.txtProblemaSituacao.setText("Problema solucionado!");
+
+
+//                        Toast.makeText(context, "" + nomeRegula, Toast.LENGTH_SHORT).show();
 
                     }
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
 
-                    }
-                });}
-                else{
-                    solucionado = true;
 
                     holder.btnSolucionado.setFrame(13);
 
-
-                    holder.txtProblemaSituacao.setText("Problema já resolvido!");
+                }else {
+//                    Toast.makeText(context, "Apenas a Policlínica poderá mudar o status do problema!", Toast.LENGTH_SHORT).show();
                 }
 
 
+            }
 
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
 
             }
         });
 
+
+            holder.btnSolucionado.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+
+                    final FirebaseUser currentUser = mAuth.getCurrentUser();
+                    String idUsuario = currentUser.getUid();
+                    reference4 = ConfiguracaoFirebase.getFirebase().child("Usuario").child(""+idUsuario);
+                    reference4.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+
+
+                            Usuario usuario = dataSnapshot.getValue(Usuario.class);
+                            boolean perfil = usuario.getPerfilAdministrador();
+
+                            String nomePoli = "Policlínica Regional de Alagoinhas";
+
+//                            Toast.makeText(context, ""+perfil, Toast.LENGTH_SHORT).show();
+                            if (perfil == true) {
+
+
+                                SharedPreferences settingss = context.getSharedPreferences("pref", Context.MODE_PRIVATE);
+                                final String nomeRegula = settingss.getString("pref", "Policlinica Regional de Alagoinhas");
+
+                                if (solucionado == false) {
+
+
+                                    holder.btnSolucionado.setFrame(52);
+
+                                    holder.txtProblemaSituacao.setText("Problema solucionado!");
+
+
+                                    Toast.makeText(context, "" + nomeRegula, Toast.LENGTH_SHORT).show();
+                                    reference2 = ConfiguracaoFirebase.getFirebase().child("Chat").child(nomeRegula);
+                                    final Query query = reference2.orderByChild("idChat").equalTo(Experts.get(position).getIdChat()).limitToFirst(1);
+
+                                    query.addValueEventListener(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(DataSnapshot dataSnapshot) {
+
+                                            if (dataSnapshot.exists()) {
+
+                                                Experts.get(position).setSolucionado(true);
+                                                reference2 = ConfiguracaoFirebase.getFirebase().child("Chat").child(nomeRegula).child(Experts.get(position).getIdChat());
+                                                reference2.setValue(Experts.get(position));
+
+
+                                            } else {
+
+
+//                                                 Toast.makeText(MainActivity.this, "Você já viu tudo sobre "+leipreferida+".Está na hora de selecionar outra categoria!", Toast.LENGTH_SHORT).show();
+
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+
+                                        }
+                                    });
+                                }
+
+
+                                holder.btnSolucionado.setFrame(13);
+
+                            }else {
+                                Toast.makeText(context, "Apenas a Policlínica poderá mudar o status do problema!", Toast.LENGTH_SHORT).show();
+                            }
+
+
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
+
+
+
+                }
+
+
+            });
+        
 //        //Como no Android não há uma forma nativa de justificar um TextView, usei um WebView e manipulei a string usando o HTML
 //        String text = "<html><body>"
 //                + "<p align=\"justify\">"
@@ -235,6 +336,7 @@ public class AdapterChat extends RecyclerView.Adapter<AdapterChat.MyViewHolder> 
         mTTS.speak(text, TextToSpeech.QUEUE_FLUSH, null);
     }
 
-    private void ocultarComentario (){
+    private void ocultarEmoticoin (){
+
     }
 }

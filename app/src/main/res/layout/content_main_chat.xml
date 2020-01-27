@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:background="#FFFFFF"
+    android:background="@drawable/gradiente_two"
     android:orientation="vertical"
     android:padding="10dp"
     tools:context=".MainActivity">
@@ -22,6 +22,15 @@
         android:layout_marginTop="20dp"
         android:src="@drawable/logo_two" />
 
+    <ImageView
+        android:id="@+id/logoid"
+        android:layout_width="40dp"
+        android:layout_height="33dp"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="left"
+        android:layout_marginTop="18dp"
+        android:layout_marginBottom="2dp"
+        android:src="@drawable/exitt" />
 
     <ScrollView
         android:id="@+id/linearScrool"
@@ -49,7 +58,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/id_recycler"
                 android:layout_width="match_parent"
-                android:layout_height="423dp"
+                android:layout_height="518dp"
                 android:visibility="visible">
 
             </androidx.recyclerview.widget.RecyclerView>
@@ -195,9 +204,9 @@
             android:textAllCaps="false"
             android:textColor="#ffffff"
             android:visibility="visible"
-            app:lottie_autoPlay="true"
+            app:lottie_autoPlay="false"
             app:lottie_fileName="btn_enviar_anim.json"
-            app:lottie_loop="true" />
+            app:lottie_loop="false" />
 
     </LinearLayout>
 

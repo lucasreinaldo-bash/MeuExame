@@ -84,7 +84,6 @@ public class Registro extends AppCompatActivity {
         //txtSenhaRepetida = (EditText) findViewById(R.id.rg_contrasenha);
         btnRegistrar = (Button) findViewById(R.id.btn_registrar);
 
-        rg = (RadioGroup) findViewById(R.id.radioGroup);
 
 
 
@@ -92,22 +91,7 @@ public class Registro extends AppCompatActivity {
 
 
 
-        rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                int childCount = group.getChildCount();
-                for (int x = 0; x < childCount; x++) {
-                    RadioButton btn = (RadioButton) group.getChildAt(x);
-                    if (btn.getId() == checkedId) {
-                        LeiFavorita = btn.getText().toString();
-                        Toast.makeText(Registro.this, LeiFavorita, Toast.LENGTH_SHORT).show();
-
-
-                    }
-                }
-            }
-        });
 
 
         // Instaciando o servidor
@@ -154,8 +138,10 @@ public class Registro extends AppCompatActivity {
                                         usuario.setId(currentUser.getUid());
                                         usuario.setImagemUsuario("https://firebasestorage.googleapis.com/v0/b/lexdjus.appspot.com/o/blank-profile-picture-973460_640.png?alt=media&token=3259e2f8-38e4-4cc2-8ca9-58770d2f88d4");
                                         DatabaseReference reference = database.getReference("Usuario/"+currentUser.getUid());
+                                        DatabaseReference referenceReplica = database.getReference("UsuarioReplica/"+nome);
                                         final DatabaseReference reference2 = database.getReference("LeisUsuarios/"+currentUser.getUid());
                                         reference.setValue(usuario);
+                                        referenceReplica.setValue(usuario);
                                         user = FirebaseAuth.getInstance().getCurrentUser();
                                         id = user.getUid();
 
@@ -164,10 +150,11 @@ public class Registro extends AppCompatActivity {
 
 
                                         Intent intent = new Intent(Registro.this, Chat.class);
+                                        intent.putExtra("site", nome);
                                         startActivity(intent);
                                         finish();
 
-//                                        startActivity(intent);
+
 
 
 

@@ -2,6 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:paddingBottom="1dp"
+    android:paddingRight="10sp"
+    android:paddingTop="1dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.cardview.widget.CardView
@@ -10,6 +13,8 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="5dp"
+        android:padding="10sp"
+
         android:layout_marginRight="2dp"
         android:layout_marginBottom="5dp"
         android:minHeight="120dp"
@@ -19,7 +24,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_marginLeft="50dp"
             android:orientation="vertical">
@@ -31,8 +36,10 @@
                 android:textColor="@color/primaryTextColor" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="50sp"
+
                 android:text="Envie uma mensagem e entraremos em contato com você o quanto antes."
                 android:textSize="10sp"
                 android:textStyle="bold" />

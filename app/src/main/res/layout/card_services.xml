@@ -2,6 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:paddingBottom="1dp"
+    android:paddingRight="10sp"
+    android:paddingTop="1dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.cardview.widget.CardView
@@ -10,15 +13,18 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="5dp"
+        android:padding="10sp"
+        android:paddingTop="1dp"
+        android:paddingBottom="1dp"
         android:layout_marginRight="2dp"
         android:layout_marginBottom="5dp"
         android:minHeight="120dp"
-        app:cardBackgroundColor="#EEECEC"
+        app:cardBackgroundColor="#E9EDF1"
         app:cardCornerRadius="16dp"
         app:cardElevation="2dp">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="240dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginLeft="50dp"
@@ -26,15 +32,16 @@
 
             <TextView
                 style="@style/viewParent.headerText"
-                android:text="Resultado de Exame"
-                android:textSize="14sp"
-                android:textColor="#25C0DE" />
+                android:text="Resultado de Exames"
+                android:textColor="#25C0DE"
+                android:textSize="14sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Veja se o seu exame já está pronto para buscá-lo."
+                android:text="Veja se o seu exame já está pronto\npara buscá-lo."
                 android:textSize="10sp"
+                android:layout_marginRight="10sp"
                 android:textStyle="bold" />
 
         </LinearLayout>

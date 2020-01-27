@@ -13,7 +13,22 @@ public class Usuario {
     private String imagemUsuario;
     private String id;
     private String tipoDePerfil;
+    private Boolean perfilAdministrador = false;
+    private String ultimaMensagem;
 
+
+
+    public void setPerfilAdministrador(Boolean perfilAdministrador) {
+        this.perfilAdministrador = perfilAdministrador;
+    }
+
+    public Boolean getPerfilAdministrador() {
+        return perfilAdministrador;
+    }
+
+    public Usuario(Boolean perfilAdministrador) {
+        this.perfilAdministrador = perfilAdministrador;
+    }
 
     public String getNomeRegulacao() {
         return nomeRegulacao;
@@ -71,14 +86,24 @@ public class Usuario {
         this.tipoDePerfil = tipoDePerfil;
     }
 
-    public Usuario(String nomeRegulacao, String responsavelRegulacao, String email, String senha, String imagemUsuario, String id, String tipoDePerfil) {
+    public String getUltimaMensagem() {
+        return ultimaMensagem;
+    }
+
+    public void setUltimaMensagem(String ultimaMensagem) {
+        this.ultimaMensagem = ultimaMensagem;
+    }
+
+    public Usuario(String nomeRegulacao, String ultimaMensagem, Boolean perfilAdministrador, String responsavelRegulacao, String email, String senha, String imagemUsuario, String id, String tipoDePerfil) {
         this.nomeRegulacao = nomeRegulacao;
         this.responsavelRegulacao = responsavelRegulacao;
         this.email = email;
         this.senha = senha;
+        this.ultimaMensagem = ultimaMensagem;
         this.imagemUsuario = imagemUsuario;
         this.id = id;
         this.tipoDePerfil = tipoDePerfil;
+        this.perfilAdministrador = perfilAdministrador;
     }
 
     public Usuario() {

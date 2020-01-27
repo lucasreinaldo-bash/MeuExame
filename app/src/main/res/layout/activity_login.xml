@@ -36,6 +36,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginTop="57dp"
         android:layout_marginBottom="102dp"
+        android:visibility="gone"
         android:gravity="center"
         android:text="Registrar" />
     <ImageView
